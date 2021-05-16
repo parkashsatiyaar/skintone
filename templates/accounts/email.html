@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account email verification</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      mark {
+        background: #f0ebebd3;
+        color: #00adb5;
+      }
+      a:link,
+      a:visited {
+        text-decoration: none;
+        color: #00adb5;
+      }
+      .wrapper {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .heading {
+        text-align: center;
+        background: #393e46;
+        padding: 20px 50px;
+      }
+      .heading h1 {
+        color: #fff;
+        align-items: center;
+      }
+      .body {
+        background: #eeeeee;
+        padding: 20px;
+      }
+      .body p {
+        font-size: 1.2rem;
+        color: #696969;
+        letter-spacing: 1px;
+      }
+
+      .box {
+        margin-top: 10px;
+        text-align: center;
+        border: 1px solid #ccc9c9;
+        padding: 20px;
+      }
+
+      .dark {
+        width: 80px;
+        display: inline-block;
+        padding: 20px;
+        background: #393e46;
+      }
+      .dark h2 {
+        color: #00adb5;
+        font-size: 3rem;
+      }
+      .light {
+        display: inline-block;
+        width: 80px;
+        padding: 20px;
+        background: #fff;
+      }
+      .light h2 {
+        color: #00adb5;
+        font-size: 3rem;
+      }
+
+      .footer {
+        word-wrap: break-word;
+        background: #393e46;
+        /* width: 50%; */
+        padding: 20px 50px;
+        text-align: center;
+      }
+      .brand a {
+        text-decoration: none;
+        color: #00adb5;
+        font-size: 2rem;
+        padding: 10px;
+      }
+
+      .brand a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+      .footer p {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="heading">
+        <h1>Verify your email address</h1>
+      </div>
+      <div class="body">
+        <div class="text">
+          <p>
+            Thank you <mark>{{name}}</mark> for signing up for
+            <mark>Human Skin Tone</mark>. As a member, you now have access to a
+            wide selection of <mark>services provided by us</mark>.
+          </p>
+          <p>
+            To access these features, first confirm your email and Your
+            confirmation code is:
+          </p>
+        </div>
+        <div class="box">
+          <div class="dark"><h2>{{auth_otp.0}}</h2></div>
+          <div class="light"><h2>{{auth_otp.1}}</h2></div>
+          <div class="dark"><h2>{{auth_otp.2}}</h2></div>
+          <div class="light"><h2>{{auth_otp.3}}</h2></div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="brand">
+          <a href="#">Human Skin Tone</a>
+        </div>
+        <div class="copyright">
+          <p>© 2021 Human Skin Tone. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

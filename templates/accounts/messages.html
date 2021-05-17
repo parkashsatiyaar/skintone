@@ -5,9 +5,9 @@
     alert-dismissable
     role="alert"
   >
-    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    <a type="button" class="close" data-dismiss="alert" aria-label="close">
       &times;
-    </button>
+    </a>
     <strong>
       {% comment %} {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
       Error: {% else %} {{message.tags | title}} {% endif %} {% endcomment %}

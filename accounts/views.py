@@ -26,11 +26,11 @@ def register(request):
             if password == confirm_password:
                 if User.objects.filter(username=username).exists():
                     messages.info(request, 'User Already exist')
-                    return redirect('register')
+                    return redirect('home')
                 else:
                     if User.objects.filter(email=email).exists():
                         messages.info(request, 'Email Already exist')
-                        return redirect('register')
+                        return redirect('home')
                     else:
                         request.session['username'] = username
                         request.session['email'] = email
@@ -59,10 +59,11 @@ def register(request):
                             user=email, auth_otp=num)
                         profile.save()
                         return redirect('verify')
-    return render(request, 'accounts/register.html')
-
+    return redirect('home')
 
 # login route
+
+
 def login(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -91,17 +92,19 @@ def verify(request):
                 user=request.session['email']).count()
             profile = Profile.objects.filter(
                 user=request.session['email'])
-
-            print(request.session['password'],
-                  request.session['username'], request.session['email'])
+            username = request.session['username']
+            password = request.session['password']
+            email = request.session['email']
+            # print(request.session['password'],
+            #       request.session['username'], request.session['email'])
             if request.POST.get('auth_otp') == profile.values('auth_otp')[count-1]['auth_otp']:
                 user = User.objects.create_user(
-                    username=request.session['username'], password=request.session['password'], email=request.session['email'])
-                print(user)
+                    username=username, password=password, email=email)
+                # print(user)
                 user.save()
                 auth.login(request, user)
                 profile.delete()
-                context = {'name': request.session['username']}
+                context = {'name': username}
                 html_content = render_to_string(
                     'accounts/confirm_email.html', context)
                 text_content = strip_tags(html_content)
@@ -110,14 +113,14 @@ def verify(request):
                     "Registration Successfull",
                     text_content,
                     settings.EMAIL_HOST_USER,
-                    [request.session['email']]
+                    [email]
                 )
                 send_mail.attach_alternative(html_content, 'text/html')
                 send_mail.send()
                 return redirect('home')
             profile.delete()
             messages.info(request, "Invalid otp or email register again!")
-            return redirect('register')
+            return redirect('home')
     return render(request, 'accounts/verify.html')
 
 

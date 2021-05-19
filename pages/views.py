@@ -1,3 +1,4 @@
+from skintone_app.settings import MEDIA_ROOT, MEDIA_URL
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from base64 import b64decode
@@ -19,7 +20,7 @@ def camera(request):
 
 
 def upload_webcam_blob(blob, id):
-    with open(f'../media/uploads/{id}.png', 'wb') as fh:
+    with open(f'media/uploads/{id}.png', 'wb') as fh:
         # Get only revelant data, deleting "data:image/png;base64,"
         data = blob.split(',', 1)[1]
         fh.write(b64decode(data))

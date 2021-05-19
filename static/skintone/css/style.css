@@ -316,7 +316,15 @@ h3 {
   .contact input[type="email"] {
     width: 80%;
   }
+
+  h1 {
+    font-size: 1.2rem;
+  }
   textarea {
     width: 80%;
+  }
+
+  .top {
+    left: 80%;
   }
 }

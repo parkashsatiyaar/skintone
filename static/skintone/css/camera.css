@@ -75,3 +75,18 @@ body {
   right: 20px;
   z-index: 2;
 }
+
+@media screen and (max-width: 700px) {
+  #camera--submit {
+    bottom: 10px;
+    left: calc(50% - 75px) !important;
+  }
+  #camera--stop {
+    bottom: 80px;
+    left: calc(50% - 75px) !important;
+  }
+  #camera--trigger {
+    bottom: 150px;
+    left: calc(50% - 75px) !important;
+  }
+}

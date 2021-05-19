@@ -19,7 +19,7 @@ def camera(request):
 
 
 def upload_webcam_blob(blob, id):
-    with open(f'media/uploads/{id}.png', 'wb') as fh:
+    with open(f'/media/uploads/{id}.png', 'wb') as fh:
         # Get only revelant data, deleting "data:image/png;base64,"
         data = blob.split(',', 1)[1]
         fh.write(b64decode(data))
